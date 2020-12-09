@@ -1,0 +1,18 @@
+local item = game:GetService("ReplicatedStorage"):WaitForChild("Item Name Here")
+local db = true
+
+script.Parent.Touched:connect(function(part)
+ if part.Parent:FindFirstChild("Humanoid") ~= nil then
+  local player = game.Players:GetPlayerFromCharacter(part.Parent)
+  if player ~= nil then
+   if player.Backpack ~= nil then
+    if db == true then
+     db = false
+     item:Clone().Parent = player.Backpack
+     wait(1)
+     db = true
+    end
+   end
+  end
+ end
+end)
